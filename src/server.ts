@@ -1,15 +1,12 @@
-import App from "./app";
+import express from "express";
+import router from "./routes";
 import { envs } from "./envs";
-import {
-  ExampleRoutes
-} from "./routes";
 
-const app = new App(
-  [
-    ExampleRoutes.bind(),
-    // Add more routes here
-  ],
-  envs.PORT,
-);
+const app = express();
+app.use(express.json());
 
-app.listen();
+app.use(router);
+
+app.listen(envs.PORT, () => {
+  console.log(`Server running on port ${envs.PORT}`);
+});
