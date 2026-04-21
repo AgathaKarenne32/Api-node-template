@@ -5,6 +5,11 @@ const router = Router();
 
 router.use("/users", userRoutes);
 
-// Remova as linhas de "export { ... }" que estavam causando conflito
-// e mantenha apenas a exportação do router principal
+
+import taskRoutes from "./task.routes"; // Importe aqui
+
+
+router.use("/users", userRoutes);
+router.use("/tasks", taskRoutes); // Registre aqui
+
 export default router;
